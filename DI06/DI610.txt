@@ -1,0 +1,10 @@
+bean           class               value
+student1      Student
+                                  name       : 선덕여왕 
+                                   30
+                                   <승마,정치>
+                                   height  : 162
+                                   weight  : 55
+studentInfo1  StudentInfo
+                                   student : student1
+
