@@ -21,7 +21,6 @@ public class TicketCommand implements ITicketCommand {
 	}
 	
 	public TicketDao getTicketDao() {
-		
 		return ticketDao;
 	}
 	// class의 인스턴스가 만들어지는 시점에 메서드의 값이 인스턴스 필드에 복사되는 구조이다. 따라서 한 곳에서 값을 변경하는 경우 서로 

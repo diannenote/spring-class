@@ -14,27 +14,25 @@ import oracle.java.mvc23e.dto.TicketDto;
 
 public class TicketDao {
 
+	// 하나의  SQL단위 
 	JdbcTemplate template;
 	
 //	PlatformTransactionManager transactionManager;
+	// 하나의  Transaction단위 
 	TransactionTemplate transactionTemplate1;
 	
 	public void setTemplate(JdbcTemplate template) {
 		this.template = template;
 	}
-	
 //	public void setTransactionManager( PlatformTransactionManager transactionManager) {
 //		this.transactionManager = transactionManager;
 //	}
-	
 	public void setTransactionTemplate1(TransactionTemplate transactionTemplate) {
 		this.transactionTemplate1 = transactionTemplate;
 	}
-	
 	public TicketDao() {
 		System.out.println(template);
 	}
-	
 	public void buyTicket(final TicketDto dto) {
 		System.out.println("buyTicket()");
 		System.out.println("dto.getConsumerId() : " + dto.getConsumerId());
@@ -49,7 +47,7 @@ public class TicketDao {
 					@Override
 					public PreparedStatement createPreparedStatement(Connection con)
 							throws SQLException {
-						String query = "insert into card (consumerId, amount) values (?, ?)";
+						String query = "insert into card(consumerId, amount) values (?, ?)";
 						PreparedStatement pstmt = con.prepareStatement(query);
 						pstmt.setString(1, dto.getConsumerId());
 						pstmt.setString(2, dto.getAmount());
@@ -62,7 +60,7 @@ public class TicketDao {
 					@Override
 					public PreparedStatement createPreparedStatement(Connection con)
 							throws SQLException {
-						String query = "insert into ticket (consumerId, countnum) values (?, ?)";
+						String query = "insert into ticket(consumerId, countnum) values (?, ?)";
 						PreparedStatement pstmt = con.prepareStatement(query);
 						pstmt.setString(1, dto.getConsumerId());
 						pstmt.setString(2, dto.getAmount());
@@ -73,20 +71,7 @@ public class TicketDao {
 			}
 		});
 		
-//		TransactionDefinition definition = new DefaultTransactionDefinition();
-//		TransactionStatus status = transactionManager.getTransaction(definition);
-		
-//		try {
-//		
-//			
-//		
-//			transactionManager.commit(status);
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			
-//			transactionManager.rollback(status);
-//		}
+
 	}
 
 	
