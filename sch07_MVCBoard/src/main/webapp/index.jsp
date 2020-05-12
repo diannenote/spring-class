@@ -10,6 +10,5 @@
 <%
 	response.sendRedirect("list");
 %>
-
 </body>
 </html>
