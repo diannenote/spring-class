@@ -8,6 +8,7 @@
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/Emp.xml" />
+		<mapper resource="mybatis/Dept.xml" />
 	</mappers>
 	
 	

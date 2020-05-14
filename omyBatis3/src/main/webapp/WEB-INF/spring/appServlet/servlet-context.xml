@@ -16,7 +16,7 @@
 	<!--  <resources location="C:\\upload" mapping="C:\\upload\**" /> -->
 	<!-- location : 물리적 주소 / mapping : 가상 주소 -->
  
-	<!-- <resources mapping="/css/**" location="/css/" /> -->
+	<resources mapping="/css/**" location="/css/" />
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />

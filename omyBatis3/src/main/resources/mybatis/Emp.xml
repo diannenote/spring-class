@@ -21,6 +21,26 @@
   
     <select id="total" resultType="int">
       select count(*) FROM emp
-    
     </select>
+    <select id="detail" parameterType="int" resultType="Emp">
+   	 select * from emp  where empno = #{empno}
+  </select>
+    
+   <update id="TKempUpdate" parameterType="Emp">
+	 update emp set ename=#{ename}, job=#{job}, mgr=#{mgr},
+	    <if test="hiredate!=null">hiredate=#{hiredate},</if>
+	    sal=#{sal}, 
+	    <if test="comm!=null"> 	comm=#{comm},    </if>
+	    deptno=#{deptno} 
+	 where empno=#{empno}
+   </update>
+    <select id="selectManager"  resultType="Emp">
+      select * from emp where empno  in (select mgr from emp)
+   </select>
+   <insert id="insert" parameterType="Emp">
+	 insert into emp values (#{empno},#{ename},#{job},#{mgr},
+	 #{hiredate},#{sal},#{comm},#{deptno} ) 
+  </insert>
+    
+    
 </mapper>
