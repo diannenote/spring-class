@@ -23,22 +23,26 @@ public class EmpDaoImpl implements EmpDao {
 	}
 	@Override
 	public Emp detail(int empno) {
-		System.out.println("EmpDaoImpl detail empno->"+empno);
+		System.out.println("EmpDaoImpl detail empno->" + empno);
 		return session.selectOne("detail", empno);
 	}
 	@Override
 	public int update(Emp emp) {
-		System.out.println("EmpDaoImpl update empno->"+emp.getEmpno());
+		System.out.println("EmpDaoImpl update empno->" + emp.getEmpno());
+		
 		return session.update("TKempUpdate", emp);
 	}
 	@Override
 	public List<Emp> listManager() {
-		System.out.println("EmpDaoImpl listManager ...");
+		System.out.println("EmpDaoImpl update listManager...");
+		
 		return session.selectList("selectManager");
 	}
+	@Override
 	public int insert(Emp emp) {
-		return session.insert("insert",emp);
+		System.out.println("EmpDaoImpl insert empno->" + emp.getEmpno());
+		
+		return session.update("TKempinsert", emp);
 	}
-	
 
 }

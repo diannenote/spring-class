@@ -34,7 +34,7 @@
 		required="required"></td></tr>
 	<tr><th>관리자사번</th><td>
 		<select name="mgr">
-			<c:forEach var="emp" items="${empMngList}">
+			<c:forEach var="emp" items="${empManagerList}">
 				<option value="${emp.empno}">${emp.ename}</option>
 			</c:forEach>
 		</select></td></tr>
