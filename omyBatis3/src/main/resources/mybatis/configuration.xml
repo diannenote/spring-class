@@ -5,10 +5,12 @@
 	<typeAliases>
 		<typeAlias alias="Emp"      	type="oracle.java.omyBatis3.model.Emp" />
 		<typeAlias alias="Dept"      	type="oracle.java.omyBatis3.model.Dept" />
+		<typeAlias alias="EmpDept"      type="oracle.java.omyBatis3.model.EmpDept" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/Emp.xml" />
 		<mapper resource="mybatis/Dept.xml" />
+		<mapper resource="mybatis/EmpDept.xml" />
 	</mappers>
 	
 	

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import oracle.java.omyBatis3.model.Emp;
+import oracle.java.omyBatis3.model.EmpDept;
 @Repository
 public class EmpDaoImpl implements EmpDao {
 	@Autowired
@@ -44,5 +45,22 @@ public class EmpDaoImpl implements EmpDao {
 		
 		return session.update("TKempinsert", emp);
 	}
+	@Override
+	public int delete(int empno) {
+		System.out.println("EmpDaoImpl delete empno->" + empno);
+		return session.delete("delete", empno);
+	}
+	@Override
+	public List<EmpDept> listEmp(EmpDept empDept) {
+		System.out.println("EmpDaoImpl listEmp empDept->" + empDept);
+		return session.selectList("TKlistemp", empDept);
+	}
+	@Override
+	public String deptName(int deptno) {
+		// TODO Auto-generated method stub
+		return session.selectOne("deptName", deptno);
+	}
+	
+	
 
 }

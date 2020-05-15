@@ -45,5 +45,9 @@
    		insert into emp values(#{empno}, #{ename}, #{job}, #{mgr}, #{hiredate}, #{sal}, #{comm}, #{deptno})
    </insert>
    
+   <delete id="delete" parameterType="int">
+   		delete from emp where empno = #{empno}
+   </delete>
+   
    
 </mapper>

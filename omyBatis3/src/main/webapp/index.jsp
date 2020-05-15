@@ -8,14 +8,14 @@
 <body>
 <%
 //response.sendRedirect("listEmpAjax.do");         // Ajax , RestController Test (VO , VOList)
-//response.sendRedirect("listEmpAjax2.do");      // Ajax , RestController Test (VO , VOList)
+response.sendRedirect("listEmpAjax2.do");      // Ajax , RestController Test (VO , VOList)
 //response.sendRedirect("upLoadFormStart.do");   // UpLoad Test
 //response.sendRedirect("doMemberList.do");      //  interCepter  시작 
-response.sendRedirect("list.do");
+//response.sendRedirect("list.do");
 //response.sendRedirect("interCepterForm.do");   //  interCepter  시작 
 
 //response.sendRedirect("insertEmp.do");
-// response.sendRedirect("listEmp.do");
+//response.sendRedirect("listEmp.do");
 // response.sendRedirect("sample/sendVO.do");    // RestController Test (VO)
 //response.sendRedirect("writeDeptCursor.do");   // Procedure Cursor Test
 //response.sendRedirect("writeDeptIn.do");       // Procedure VO     Test

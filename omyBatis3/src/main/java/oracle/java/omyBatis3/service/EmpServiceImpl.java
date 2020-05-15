@@ -9,6 +9,7 @@ import oracle.java.omyBatis3.dao.DeptDao;
 import oracle.java.omyBatis3.dao.EmpDao;
 import oracle.java.omyBatis3.model.Dept;
 import oracle.java.omyBatis3.model.Emp;
+import oracle.java.omyBatis3.model.EmpDept;
 
 @Service
 public class EmpServiceImpl implements EmpService {
@@ -16,6 +17,7 @@ public class EmpServiceImpl implements EmpService {
 	private EmpDao ed;
     @Autowired
 	private DeptDao dd;
+   
 	
 	@Override
 	public List<Emp> list(Emp emp) {
@@ -69,5 +71,30 @@ public class EmpServiceImpl implements EmpService {
 		System.out.println("EmpServiceImpl insert empno->" + emp.getEmpno());
 		return ed.insert(emp);
 	}
+
+
+	@Override
+	public int delete(int empno) {
+		System.out.println("EmpServiceImpl delete empno->" + empno);
+		return ed.delete(empno);
+	}
+
+
+	@Override
+	public List<EmpDept> listEmp(EmpDept empDept) {
+		System.out.println("EmpServiceImpl listEmp empDept->" + empDept);
+
+		return ed.listEmp(empDept);
+	}
+
+
+	@Override
+	public String deptName(int deptno) {
+		System.out.println("EmpServiceImpl deptName deptno->" + deptno);
+		return ed.deptName(deptno);
+	}
+	
+
+	
 
 }
