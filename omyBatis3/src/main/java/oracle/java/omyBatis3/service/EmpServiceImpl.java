@@ -1,5 +1,6 @@
 package oracle.java.omyBatis3.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,9 +8,13 @@ import org.springframework.stereotype.Service;
 
 import oracle.java.omyBatis3.dao.DeptDao;
 import oracle.java.omyBatis3.dao.EmpDao;
+import oracle.java.omyBatis3.dao.Member1Dao;
 import oracle.java.omyBatis3.model.Dept;
+import oracle.java.omyBatis3.model.DeptVo;
 import oracle.java.omyBatis3.model.Emp;
 import oracle.java.omyBatis3.model.EmpDept;
+import oracle.java.omyBatis3.model.Member1;
+
 
 @Service
 public class EmpServiceImpl implements EmpService {
@@ -17,6 +22,10 @@ public class EmpServiceImpl implements EmpService {
 	private EmpDao ed;
     @Autowired
 	private DeptDao dd;
+    @Autowired
+    private Member1Dao md;
+    
+    
    
 	
 	@Override
@@ -93,6 +102,37 @@ public class EmpServiceImpl implements EmpService {
 		System.out.println("EmpServiceImpl deptName deptno->" + deptno);
 		return ed.deptName(deptno);
 	}
+
+
+	@Override
+	public void insertDdept(DeptVo deptVO) {
+		dd.insertDept(deptVO);
+		
+	}
+
+
+	@Override
+	public void SelListDept(HashMap<String, Object> map) {
+
+		dd.SelListDept(map);
+	}
+
+
+	@Override
+	public int memCount(String id) {
+		
+		System.out.println("EmpServiceImpl memCount id->" + id);
+		return md.memCount(id);
+	}
+
+
+	@Override
+	public List<Member1> listMem(Member1 member1) {
+		System.out.println("EmpserviceImpl listMem ");
+		
+		return md.listMem(member1);
+	}
+
 	
 
 	

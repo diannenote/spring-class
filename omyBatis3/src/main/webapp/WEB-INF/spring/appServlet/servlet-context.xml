@@ -35,15 +35,15 @@
      </beans:bean>
     
 	<!--   interCepter.do를 호출할때 sampleInterceptor로 전달  -->
-<!-- 	<beans:bean id="sampleInterceptor" class="oracle.java.smyBatis3.service.SampleInterceptor"></beans:bean>
+	<beans:bean id="sampleInterceptor" class="oracle.java.omyBatis3.service.SampleInterceptor"></beans:bean>
     <interceptors>
        <interceptor>
-          <mapping path="/interCepter.do"/>
+          <mapping path="/interCeptor.do"/>
           <beans:ref bean="sampleInterceptor"/>
        </interceptor>
     </interceptors> 
     
- -->    
+  
     
     
     

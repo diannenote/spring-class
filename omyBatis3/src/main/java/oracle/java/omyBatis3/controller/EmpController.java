@@ -1,6 +1,8 @@
 package oracle.java.omyBatis3.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
@@ -20,8 +22,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import oracle.java.omyBatis3.model.Dept;
+import oracle.java.omyBatis3.model.DeptVo;
 import oracle.java.omyBatis3.model.Emp;
 import oracle.java.omyBatis3.model.EmpDept;
+import oracle.java.omyBatis3.model.Member1;
 import oracle.java.omyBatis3.service.EmpService;
 import oracle.java.omyBatis3.service.Paging;
 
@@ -185,7 +189,94 @@ public class EmpController {
 		model.addAttribute("listEmp",listEmp);
 		return "listEmpAjax2";
 	}
+	
+	//Procedure VO Test
+	@RequestMapping(value="writeDeptIn", method= RequestMethod.GET)
+	public String writeDeptIn(Locale locale, Model model) {
+		System.out.println("writeDeptIn start");
+		return "writeDept3";
+	}
+	
+	//Procedure test 입력 후 VO 전달 test
+	@RequestMapping(value="writeDept", method=RequestMethod.POST)
+	public String writeDept(DeptVo deptVO, Model model) {
+		es.insertDdept(deptVO);
+		if (deptVO == null) {
+			System.out.println("deptVO null");
+		} else {
+			System.out.println();
+			System.out.println();
+			System.out.println();
+			model.addAttribute("msg", "정상입력되었습니다.");
+			model.addAttribute("dept", deptVO);
+		}
+		return "writeDept3";
+	}
+	
+	@RequestMapping(value="writeDeptCursor", method=RequestMethod.GET)
+	public String writeDeptCursor(Model model) {
+		System.out.println("writeDeptCursor start");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("sDeptno", 10);
+		map.put("eDeptno", 80);
+		es.SelListDept(map);
+		List<Dept> deptList = (List<Dept>) map.get("dept");
+		System.out.println("deptList.get[0].getDname()->" + deptList.get(0).getDname());
+		System.out.println("deptList.get[0].getLoc()->" + deptList.get(0).getLoc());
+		System.out.println("depsize->" + deptList.size());
 		
+		model.addAttribute("deptList", deptList);
+		return "writeDeptCursor";
+	}
+	
+	// interCeptor 시작 화면 
+		@RequestMapping(value = "interCeptorForm", method = RequestMethod.GET)
+		public String interCepterForm(Model model) {
+			  System.out.println("interCepterForm Start");
+		    return "interCeptorForm";
+		}
+		
+		// interCepter 진행 Test
+		@RequestMapping(value="interCeptor")
+		public String interCepter(String id, Model model) {
+			System.out.println("interCeptor  Test Start");
+			System.out.println("interCeptor id->"+id);
+			//int memCnt = 1;
+			int memCnt = es.memCount(id);
+
+			System.out.println("memCnt ->"+ memCnt);
+		//	List<EmpDept> listEmp = es.listEmp(empDept); User 가져오는 Service
+		//   member1의   Count가져오는  Service 수행 
+		//	member.setId("kkk");
+
+			model.addAttribute("id",id);
+			model.addAttribute("memCnt",memCnt);
+			System.out.println("interCeptor  Test End");
+			return "interCeptor";   // User 존재하면  User 이용 조회 Page
+		}
+		
+		// interCeptor 진행 Test
+		@RequestMapping(value="doMemberList")
+		public String doMemberList(Model model, HttpServletRequest request){
+			String ID =  (String) request.getSession().getAttribute("ID");
+			System.out.println("doMemberList  Test Start  ID ->"+ID);
+			Member1 member1 = null;
+			// Member1 List Get Service
+			List<Member1> listMem = es.listMem(member1);
+			model.addAttribute("ID",ID);
+			model.addAttribute("listMem",listMem);
+			return "doMemberList";   // User 존재하면  User 이용 조회 Page
+		}
+		
+		// SampleInterceptor 내용을 받아 처리 
+		@RequestMapping(value = "doMemberWrite", method = RequestMethod.GET)
+		public String doMemberWrite( Model model,  HttpServletRequest request) {
+			 String ID =  (String) request.getSession().getAttribute("ID");
+		     System.out.println("doMemberWrite....................");
+			 model.addAttribute("id",ID);
+		     return "doMemberWrite";
+		}  
+
 	
 }
 
